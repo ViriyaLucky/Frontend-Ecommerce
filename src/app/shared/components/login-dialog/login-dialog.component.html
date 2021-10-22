@@ -1,0 +1,27 @@
+<h2 *ngIf="!cookieService.check('jwt')" mat-dialog-title>Login to Checkout</h2>
+<h2 *ngIf="cookieService.check('jwt')" mat-dialog-title>Checking Out...</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!cookieService.check('jwt')">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your username</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="username"
+        required
+      />
+      <mat-error *ngIf="form.get('username')?.hasError('required')">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput type="password" formControlName="password" required />
+      <mat-error *ngIf="form.get('password')?.hasError('required')">{{ getErrorMessage() }}</mat-error>
+
+    </mat-form-field>
+    <mat-error *ngIf="loginError">{{ getErrorMessage() }}</mat-error>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end"  *ngIf="!cookieService.check('jwt')">
+    <button  mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" *ngIf="!cookieService.check('jwt')" [disabled]="!form.valid" (click)="onSubmit()">Login</button>
+</mat-dialog-actions>

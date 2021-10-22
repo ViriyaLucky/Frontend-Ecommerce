@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title >{{product.ProductName}}</mat-card-title>
+  </mat-card-header>
+  <img src="{{ product.Image_Path }}" />
+  <mat-card-content>
+    <p>{{ product.Description }}</p>
+    <p>Rp. {{ product.Price | number }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-divider [inset]="true"></mat-divider>
+    <button mat-raised-button color="primary" (click)="checkout()">Buy</button>
+  </mat-card-actions>
+</mat-card>

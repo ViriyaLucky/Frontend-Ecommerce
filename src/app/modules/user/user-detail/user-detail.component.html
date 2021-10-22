@@ -1,0 +1,34 @@
+<div *ngIf="isLoading" class="content-loading">
+  <mat-progress-spinner mode="indeterminate"> </mat-progress-spinner>
+  <h1>Loading data...</h1>
+</div>
+<div *ngIf="!isLoading" class="content">
+  <div *ngIf="cookieService.check('jwt')">
+    <mat-card>
+      <mat-card-title>User Profile</mat-card-title>
+      <mat-card-content>
+        <p>Username: {{ userDetail.username }}</p>
+        <p>Email: {{ userDetail.email }}</p>
+      </mat-card-content>
+    </mat-card>
+    <h2>Orders:</h2>
+    <div role="list" *ngFor="let order of orders">
+      <mat-card>
+        <mat-card-title>Date: {{ order.Created_Date }} </mat-card-title>
+        <mat-card-subtitle>{{ order.Product.ProductName }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>Quantity: {{ order.Quantity }}</p>
+          <p></p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="!cookieService.check('jwt')">
+    <mat-card>
+      <mat-card-title>User Profile</mat-card-title>
+      <mat-card-content>
+        <p>Please login first</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

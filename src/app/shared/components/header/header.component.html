@@ -1,0 +1,31 @@
+<!-- Toolbar -->
+
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/home">Angular Application</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li *ngIf="cookieService.check('jwt')">
+        <a routerLink="/user/profile">User Profile</a>
+      </li>
+      <li>
+        <a routerLink="/about">About</a>
+      </li>
+      <li *ngIf="!cookieService.check('jwt')">
+        <a [routerLink]="" (click)="login()">Login</a>
+      </li>
+      <li *ngIf="cookieService.check('jwt')">
+        <a [routerLink]="" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

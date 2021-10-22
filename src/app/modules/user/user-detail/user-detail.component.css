@@ -1,0 +1,30 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+.profile-image{
+  margin:auto;
+  margin-bottom: 20px;
+}
+
+.content-loading{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-progress-spinner{
+ justify-content: center;
+}
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+

@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="row">
+    <div class="col-4" *ngFor="let product of newList">
+      <post-card [product]="product"></post-card>
+    </div>
+  </div>
+</div>
+<div *ngIf="isRequestingData && pages < 1" class="content-loading">
+  <mat-progress-spinner mode="indeterminate"> </mat-progress-spinner>
+  <h1>Loading data...</h1>
+</div>
+<div *ngIf="isRequestingData && pages" class="content-loading-extra">
+  <mat-progress-spinner mode="indeterminate"> </mat-progress-spinner>
+</div>
